@@ -333,6 +333,7 @@ on dept_emp.dept_no = departments.dept_no
 where salary = (
 select Max(salary)
 from salaries);
+
 -- 6. 평균급여보다 많이 받는 사원의 사원번호, 이름, 급여, 입사일을 출력하시오.
 select employees.emp_no, first_name, salary, hire_date
 from employees inner join salaries
@@ -340,14 +341,29 @@ on employees.emp_no = salaries.emp_no
 where salary>(
 select avg(salary)
 from salaries);
--- 7. 남자 평균 급여와 여자 평균 급여를 출력하시오.
-select salary1, salary2
-from employees inner join salaries
-on employees.emp_no = salaries.emp_no
-where salary = (
-select avg(salary)
-from salaries
-where gender = 'F') as s1 and ;
+
+-- 7. 남자 평균 급여와 여자 평균 급여를 출력하시오.  -- 젠더 값은 employees 테이블에만 존재
+
+select gender, avg(salary)
+from salaries inner join employees
+on salaries.emp_no = employees.emp_no
+group by gender;
 
 
 -- 8. 각 성별로 평균급여 보다 많이 받는 사원의 상위 5명의 이름과 급여 입사일 부서명을 출력하시오.
+-- 남자
+select employees.emp_no, first_name, max(salary), hire_date, dept_name
+from employees inner join salaries
+on employees.emp_no = salaries.emp_no inner join dept_emp
+on salaries.emp_no = dept_emp.emp_no inner join departments
+on dept_emp.dept_no = departments.dept_no
+where salary > (
+	select avg(salary)
+	from salaries    
+    ) and gender ='M' -- 'F'로 바꾸면 여자 데이터 출력
+group by emp_no
+order by max(salary) desc
+limit 0,5;
+
+
+	
