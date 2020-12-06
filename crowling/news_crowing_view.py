@@ -1,33 +1,33 @@
 
-import  requests
+import requests
 from MyDB import DB
 from bs4 import BeautifulSoup
 import time
-from collections import  defaultdict
+from collections import defaultdict
 import requests
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36"
 HEADERS = {"User-Agent": USER_AGENT}
 
-def get_html(news_url):
+def get_html(news_url): # url사이트의 text 값을 가져옴
   #request로 자료 받기
   #print(news_url)
   data=''
   try:
-      response=requests.get(news_url,headers=HEADERS)
+      response=requests.get(news_url, headers=HEADERS)
       data=response.text
       #print('test', data)
       time.sleep(2)
   except Exception as e:
       print('에러')
   finally:
-       response.close()
+      response.close()
   return data
 
-def get_db_data():
+def get_db_data(): # DB에서 데이터값들을 가져옴
   host="127.0.0.1"
   user="root"
-  pwd="kita"
+  pwd="qwe123"
   mydb="t1"
   db=DB(host, user,  pwd, mydb)
   #print("db연결 완료",db)
@@ -88,10 +88,11 @@ def collect_sub_content(sub):
 if __name__ == '__main__':
     newsurl_list=get_db_data()
 
-
-    html=get_html(newsurl_list[0]['url'])
-    suburl=collect_sub_urls(html)
-    collect_sub_content(suburl[0])
+    for i in newsurl_list:
+        print(i)
+    #html=get_html(newsurl_list[1])
+    #suburl=collect_sub_urls(html)
+    #collect_sub_content(suburl[0])
 
     #      time.sleep(1)
 

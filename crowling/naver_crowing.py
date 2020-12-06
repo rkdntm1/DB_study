@@ -22,6 +22,7 @@ def search_news():
 
     idwrap = driver.find_element_by_css_selector('#wrap')
     menu_list = idwrap.find_elements_by_css_selector('#lnb ul li')
+
     news_urls = []
 
     for index in menu_list:
@@ -72,7 +73,7 @@ if __name__ == '__main__':
 
     url = "127.0.0.1"
     user = "root"
-    pwd = "kita"
+    pwd = "qwe123"
     mydb = "t1"
     db = DB(url, user, pwd, mydb)
 
