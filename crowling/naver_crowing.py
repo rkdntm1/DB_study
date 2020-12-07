@@ -13,6 +13,7 @@ import time
 
 
 def search_news():
+    print("gg ")
     USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36"
     HEADERS = {"User-Agent": USER_AGENT}
     main_url = 'https://news.naver.com/'
@@ -80,7 +81,8 @@ if __name__ == '__main__':
     print('db접속 : ', db)
 
     for index in result.url:
-        db.inserdata(result.title, index)
+       db.inserdata(result.title, index)
 
     print('쓰기완료')
     sys.exit()
+

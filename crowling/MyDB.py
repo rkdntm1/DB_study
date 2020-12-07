@@ -28,7 +28,7 @@ class DB:
         try:
             with self.conn.cursor() as cursor:
                 # Read a single record
-                sql = "select distinct list_name, price from homew "
+                sql = "select distinct title, price from homew "
 
                 cursor.execute(sql)
                 newsurls=cursor.fetchall()
@@ -45,7 +45,7 @@ class DB:
           self.connect()
           with self.conn.cursor() as cursor:
             # Create a new record
-              sql = "insert into homew(page, `list_name`, `price`) VALUES (%s, %s, %s)"
+              sql = "insert into homew(page_t, `title`, `price`) VALUES (%s, %s, %s)"
               #data=(title, news_url)
               #cursor.execute(sql, (title, news_url))
               cursor.execute(sql, (pages, title, news_url))

@@ -11,17 +11,17 @@ elem = browser.find_element_by_class_name("link_login")
 elem.click()
 
 # 3. id, pw 입력
-browser.find_element_by_id("id").send_keys("liaadlo30")
-browser.find_element_by_id("pw").send_keys("tpqm9498^^ ")
+browser.find_element_by_id("id").send_keys("asdasd")
+browser.find_element_by_id("pw").send_keys("asdasd")
 
 # 4. 로그인 버튼 클릭
 browser.find_element_by_id("log.login").click()
 time.sleep(3)
 
 # 5. id를 새로 입력
-#browser.find_element_by_id("id").send_keys("rkdntm3")
+#browser.find_element_by_id("id").send_keys("asdad")
 browser.find_element_by_id("id").clear()
-browser.find_element_by_id("id").send_keys("rkdntm3")
+browser.find_element_by_id("id").send_keys("dsda")
 
 # 6. html 정보 출력
 print(browser.page_source)
