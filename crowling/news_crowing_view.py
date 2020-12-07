@@ -27,7 +27,7 @@ def get_html(news_url): # url사이트의 text 값을 가져옴
 def get_db_data(): # DB에서 데이터값들을 가져옴
   host="127.0.0.1"
   user="root"
-  pwd="qwe123"
+  pwd="kita"
   mydb="t1"
   db=DB(host, user,  pwd, mydb)
   #print("db연결 완료",db)
