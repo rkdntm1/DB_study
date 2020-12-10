@@ -80,22 +80,21 @@ def scrape_eng():
     for eng in engs[:len(engs)//2]: # 절반 미만 부분 가져오기
         print(eng.get_text().strip())
 
+
 def scrape_coro():
-    url ="https://corona-live.com/"
+    url ="http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=11&ncvContSeq=&contSeq=&board_id=&gubun="
     soup = createres(url)
-    cov = soup.find("div", attrs={"class":"Layout__SBox-c6bc3z-0 dEQorJ"}).get_text()
-    print("실시간확진자수: ", cov)
-
-
-
-
-
+    covs = soup.find("ul", attrs={"class":"ca_body"}).find_all("li")
+    print()
+    print('[코로나 확진자 현황]')
+    for cov in covs:
+        print('전일 확진자수:', cov.find('p').get_text().strip())
 
 
 
 if __name__ == "__main__":
-    scrape_weather()
-    scrape_news()
-    scrape_news_IT()
-    scrape_eng()
+    # scrape_weather()
+    # scrape_news()
+    # scrape_news_IT()
+    # scrape_eng()
     scrape_coro()
